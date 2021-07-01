@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../includes/head') %>
+</head>
+
+<body>
+    <div class="page-holder">
+        <!-- navbar-->
+        <header class="header bg-white">
+            <div class="container px-0 px-lg-3">
+                <%- include ('../includes/nav-shop') %>
+            </div>
+        </header>
+
+        <div class="container">
+            <section class="hero pb-3 bg-cover bg-center d-flex align-items-center" style="background: url(../../images/hero-banner-alt.jpg)">
+                <div class="container py-5">
+                    <div class="row px-4 px-lg-5">
+                        <div class="col-lg-6">
+                            <p class="text-muted small text-uppercase mb-2">New Inspiration Banner 2021</p>
+                            <h1 class="h2 text-uppercase mb-3">Really cool Headline</h1><a class="btn btn-dark" href="/products">Browse Products</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="py-5">
+                <div class="">
+                    <div class="row">
+                        <!-- SHOP LISTING-->
+                        <div class="order-1 order-lg-2 mb-5 mb-lg-0">
+                            <div class="row">
+                                <%- include ('../includes/products-shop.ejs') %>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- Footer -->
+
+        <%- include('../includes/footer')  %>
+
+            <!-- JavaScript files-->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/owl.carousel2.thumbs@0.1.8/dist/owl.carousel2.thumbs.min.js"></script>
+    </div>
+</body>
+
+</html>

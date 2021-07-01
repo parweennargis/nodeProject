@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../includes/head') %>
+</head>
+
+<body>
+    <div class="page-holder">
+        <!-- navbar-->
+        <header class="header bg-white">
+            <div class="container px-0 px-lg-3">
+                <%- include ('../includes/nav-shop') %>
+            </div>
+        </header>
+        <!--  Modal TBD-->
+        <div class="container py-5">
+            <div class="card mb-4" id="forms">
+                <div class="card-body">
+
+                    <h4 class="mb-5">Add Product</h4>
+                    <div class="card-body">
+                        <form action="/admin/<% if (editing) { %>edit-product<% } else { %>add-product<% } %>" method="POST">
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="title">Title</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="title" name="title" type="text" placeholder="Product Title" value="<% if (editing) { %><%= product.title %><% } %>">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="imageUrl">Image URL</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="imageUrl" name="imageUrl" type="text" placeholder="Image URL" value="<% if (editing) { %><%= product.imageUrl %><% } %>">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="price">Price</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="price" name="price" type="number" placeholder="$0.00" value="<% if (editing) { %><%= product.price %><% } %>">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="description">Description</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" id="description" name="description" type="text" placeholder="Product Description" rows="7"><% if (editing) { %><%= product.description %><% } %></textarea>
+                                </div>
+                            </div>
+                            <% if (editing) { %>
+                                <input type="hidden" value="<%= product._id %>" name="productId">
+                                <% } %>
+                                    <div class="form-group row">
+                                        <div class="col-sm-10">
+                                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                            <button class="btn btn-primary" type="submit"><% if (editing) { %>Update Product<% } else { %>Add Product<% } %></button>
+                                        </div>
+                                    </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <!-- Footer -->
+
+        <%- include('../includes/footer')  %>
+
+            <!-- JavaScript files-->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/owl.carousel2.thumbs@0.1.8/dist/owl.carousel2.thumbs.min.js"></script>
+
+            <!-- <script src="js/pageFunctions.js"></script> arrumar funcoes. -->
+    </div>
+</body>
+
+</html>

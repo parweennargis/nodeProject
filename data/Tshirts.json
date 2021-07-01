@@ -1,0 +1,37 @@
+[{
+        "id": 1,
+        "name": "Dog T-shirt",
+        "price": 25,
+        "description": "Yellow Dog Tee",
+        "img": "images/DoggyTshirt.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Hizz T-shirt",
+        "price": 35,
+        "description": "Hizz Cat Tee",
+        "img": "images/HizzTshirt.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Paws T-shirt",
+        "price": 50,
+        "description": "Paw Dog Tee",
+        "img": "images/pawsTee.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Summer Dog T-shirt",
+        "price": 50,
+        "description": "Summer Dog Tee",
+        "img": "images/summerDogTee.jpg"
+    },
+    {
+        "id": 5,
+        "name": "THUG LIFE",
+        "price": 40,
+        "description": "Dog Thug Life Tee",
+        "img": "images/doglifeTee.jpg"
+    }
+
+]

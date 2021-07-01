@@ -1,0 +1,34 @@
+<!-- PRODUCT-->
+<% if(Array.isArray(prods) && prods.length > 0) { %>
+    <% for(let product of prods) { %>
+        <div class="col-lg-4 col-sm-6">
+            <div class="product text-center">
+                <div class="mb-3 position-relative">
+                    <div class="badge text-white badge-"></div>
+                    <a class="d-block" href="/products/<%= product._id%>"><img class="img-fluid w-100" src= "<%= product.imageUrl %>" alt="..."></a>
+                    <div class="product-overlay">
+                        <ul class="mb-0 list-inline">
+                            <li class="list-inline-item m-0 p-0">
+                                <form action="/cart" method="post">
+                                    <button class="btn btn-sm btn-dark" type="submit">Add to Cart</button>
+                                    <input type="hidden" name="productId" value="<%= product._id %>">
+                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                </form>
+                            </li>
+                            <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="/products/<%= product._id%>">Details</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <h6>
+                    <a class="reset-anchor" href="/products/<%= product._id%>">
+                        <%= product.title %>
+                    </a>
+                </h6>
+                <p class="small text-muted">
+                    $
+                    <%= product.price %>.00
+                </p>
+            </div>
+        </div>
+        <% } %>
+            <% } %>

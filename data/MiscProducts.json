@@ -1,0 +1,37 @@
+[{
+        "id": 6,
+        "name": "Air Pods",
+        "price": 225,
+        "description": "Apple Air Pods",
+        "img": "images/product-1.jpg"
+    },
+    {
+        "id": 7,
+        "name": "Jordan Tennis Shoes",
+        "price": 150,
+        "description": "Red basktball Jordan Shoes",
+        "img": "images/product-2.jpg"
+    },
+    {
+        "id": 8,
+        "name": "Paws T-shirt",
+        "price": 50,
+        "description": "Paw Dog Tee",
+        "img": "images/pawsTee.jpg"
+    },
+    {
+        "id": 9,
+        "name": "Summer Dog T-shirt",
+        "price": 50,
+        "description": "Summer Dog Tee",
+        "img": "images/summerDogTee.jpg"
+    },
+    {
+        "id": 10,
+        "name": "THUG LIFE",
+        "price": 40,
+        "description": "Dog Thug Life Tee",
+        "img": "images/doglifeTee.jpg"
+    }
+
+]
