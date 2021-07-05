@@ -4,7 +4,7 @@ const express = require('express');
 const { body } = require('express-validator');
 
 const adminController = require('../controllers/admin');
-const isAuth = require(path.join(__dirname, '../midleware/is-auth'));
+const isAuth = require(path.join(__dirname, '../../midleware/is-auth'));
 
 const router = express.Router();
 

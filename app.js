@@ -2,13 +2,13 @@ const path = require('path');
 const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
-const errorController = require('./controllers/error');
-const User = require('./models/user');
+const User = require('./api/models/user');
+const errorController = require('./api/controllers/error');
 
 //ROUTES 
-const adminRoutes = require('./routes/admin');
-const shopRoutes = require('./routes/shop');
-const authRoutes = require('./routes/auth');
+const adminRoutes = require('./api/routes/admin');
+const shopRoutes = require('./api/routes/shop');
+const authRoutes = require('./api/routes/auth');
 
 
 const app = express();

@@ -3,7 +3,7 @@ const path = require('path');
 const express = require('express');
 
 const shopController = require('../controllers/shop');
-const isAuth = require(path.join(__dirname, '../midleware/is-auth'));
+const isAuth = require(path.join(__dirname, '../../midleware/is-auth'));
 
 const router = express.Router();
 

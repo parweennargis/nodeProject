@@ -58,6 +58,7 @@ exports.getSignup = (req, res, next) => {
 exports.postLogin = (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;
+    console.log('hererererer');
 
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -258,10 +259,10 @@ exports.postNewPassword = (req, res, next) => {
     let resetUser;
 
     User.findOne({
-            resetToken: passwordToken,
-            resetTokenExpiration: { $gt: Date.now() },
-            _id: userId
-        })
+        resetToken: passwordToken,
+        resetTokenExpiration: { $gt: Date.now() },
+        _id: userId
+    })
         .then(user => {
             resetUser = user;
             return bcrypt.hash(newPassword, 12);
