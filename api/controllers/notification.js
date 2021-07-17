@@ -6,7 +6,5 @@ exports.createNotification = async (data) => {
 };
 
 exports.getNotificatons = async (req, res, next) => {
-    const notifications = await Notification.find({ userId: req.user._id }).exec();
-
-    return notifications;
+    return Notification.find({ userId: req.user._id });
 };

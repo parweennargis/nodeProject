@@ -4,6 +4,7 @@ const { validationResult } = require('express-validator');
 
 const Product = require('../models/product');
 const Order = require('../models/order');
+const Notification = require('../models/notification');
 
 exports.getAddProduct = (req, res, next) => {
     req.user
@@ -41,7 +42,6 @@ exports.postAddProduct = (req, res, next) => {
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-        console.log(errors.array());
         return res.status(422).render('admin/edit-product', {
             pageTitle: 'Add Product',
             path: '/admin/add-product',
@@ -68,8 +68,6 @@ exports.postAddProduct = (req, res, next) => {
     product
         .save()
         .then(result => {
-            // console.log(result);
-            console.log('Created Product');
             res.redirect('/admin/products');
         })
         .catch(err => {
@@ -133,9 +131,7 @@ exports.postEditProduct = (req, res, next) => {
     const updatedDesc = req.body.description;
 
     const errors = validationResult(req);
-    console.log(errors);
     if (!errors.isEmpty()) {
-        console.log(errors.array()[0].msg);
         return res.status(422).render('admin/edit-product', {
             pageTitle: 'Edit Product',
             path: '/admin/edit-product',
@@ -163,7 +159,6 @@ exports.postEditProduct = (req, res, next) => {
             product.description = updatedDesc;
             product.imageUrl = updatedImageUrl;
             return product.save().then(result => {
-                console.log('UPDATED PRODUCT!');
                 res.redirect('/admin/products');
             });
         })
@@ -191,7 +186,6 @@ exports.getProducts = (req, res, next) => {
 
             Product.find({ userId: req.user._id })
                 .then(products => {
-                    // console.log(products);
                     res.render('admin/products', {
                         prods: products,
                         pageTitle: 'Admin Products',
@@ -212,7 +206,6 @@ exports.postDeleteProduct = (req, res, next) => {
     const prodId = req.body.productId;
     Product.deleteOne({ _id: prodId, userId: req.user._id })
         .then(() => {
-            console.log('DESTROYED PRODUCT');
             res.redirect('/admin/products');
         })
         .catch(err => {
@@ -245,15 +238,26 @@ exports.getAllOrders = async (req, res, next) => {
         },
         { $unwind: { path: '$user' } },
     ]);
-    console.log(data);
-    res.render('admin/update/products/status', {
-        pageTitle: 'Add Product',
-        path: '/admin/order-list',
-        editing: false,
-        hasError: false,
-        errorMessage: null,
-        validationErrors: [],
+    res.render('admin/order-list', {
+        orders: data,
+        pageTitle: 'Admin Products',
+        path: '/admin/order/list',
         isLoggedIn: req.session.isLoggedIn,
-        cartQuantity: cartQuantity()
+        cartQuantity: 10
     });
+};
+
+exports.changeOrderStatus = async (req, res, next) => {
+    if (req.body.orderId && req.body.orderStatus) {
+        // update the order status
+        await Order.updateOne({ _id: req.body.orderId }, { orderStatus: req.body.orderStatus });
+
+        // create the notification document
+        await Notification.create({
+            orderId: req.body.orderId,
+            userId: req.session.user._id,
+            msg: req.body.orderStatus
+        })
+    }
+    res.redirect('/admin/order/list');
 };

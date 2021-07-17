@@ -49,7 +49,8 @@ router.post(
     adminController.postEditProduct
 );
 
-router.get('/update/order/list', isAuth, adminController.getAllOrders);
+router.get('/order/list', isAuth, adminController.getAllOrders);
+router.post('/order/status', isAuth, adminController.changeOrderStatus);
 
 router.post('/delete-product', isAuth, adminController.postDeleteProduct);
 

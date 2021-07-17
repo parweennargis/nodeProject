@@ -54,7 +54,6 @@ exports.getProducts = (req, res, next) => {
                         });
                     })
                     .catch(err => {
-                        console.log(err);
                         const error = new Error(err);
                         error.httpStatusCode = 500;
                         return next(error);
@@ -178,7 +177,6 @@ exports.getCart = (req, res, next) => {
                 return { quantity: i.quantity, product: {...i.productId._doc } };
             });
 
-            console.log(products);
 
             const cartQuantity = products => {
                 let qtd = 0;
@@ -211,7 +209,6 @@ exports.postCart = (req, res, next) => {
             return req.user.addToCart(product);
         })
         .then(result => {
-            console.log(result);
             res.redirect('/cart');
         })
         .catch(err => {
