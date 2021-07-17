@@ -24,7 +24,7 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 const csrf = require('csurf');
 const flash = require('connect-flash');
 
-const MONGODB_URL = process.env.MONGODB_URL;
+const MONGODB_URL = process.env.MONGODB_URL || 'mongodb://localhost:27017/cse';
 const options = {
     useUnifiedTopology: true,
     useNewUrlParser: true,
