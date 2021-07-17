@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const { validationResult } = require('express-validator');
 
 const Product = require('../models/product');
+const Order = require('../models/order');
 
 exports.getAddProduct = (req, res, next) => {
     req.user
@@ -219,4 +220,40 @@ exports.postDeleteProduct = (req, res, next) => {
             error.httpStatusCode = 500;
             return next(error);
         });
+};
+
+exports.getAllOrders = async (req, res, next) => {
+    const data = await Order.aggregate([
+        {
+            $match: {}
+        },
+        {
+            $lookup: {
+                from: 'users',
+                let: { 'userId': '$user.userId' },
+                pipeline: [
+                    {
+                        $match: {
+                            $and: [
+                                { $expr: { $eq: ['$_id', '$$userId'] } },
+                            ]
+                        }
+                    }
+                ],
+                as: 'user'
+            }
+        },
+        { $unwind: { path: '$user' } },
+    ]);
+    console.log(data);
+    res.render('admin/update/products/status', {
+        pageTitle: 'Add Product',
+        path: '/admin/order-list',
+        editing: false,
+        hasError: false,
+        errorMessage: null,
+        validationErrors: [],
+        isLoggedIn: req.session.isLoggedIn,
+        cartQuantity: cartQuantity()
+    });
 };

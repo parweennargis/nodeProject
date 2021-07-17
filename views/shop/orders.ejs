@@ -33,14 +33,14 @@
             <section class="py-5">
                 <div class="container">
                     <!-- <div class="row"> -->
-                    <% if (orders.length <= 0) { %>
+                    <% if (orders.length <=0) { %>
                         <div class="page-content">
                             <h1>No orders to show!</h1>
                         </div>
                         <% } else { %>
                             <div class="page-content-orders">
                                 <div class="row">
-                                    <% orders.forEach(order => { %>
+                                    <% orders.forEach(order=> { %>
                                         <div class="column">
                                             <div class="card card-body">
                                                 <div class="order-background">
@@ -49,14 +49,20 @@
                                                     </p>
                                                 </div>
                                                 <div class="prod-background">
-                                                    <% order.products.forEach(p => { %>
+                                                    <% order.products.forEach(p=> { %>
                                                         <p><b>Item:</b>
                                                             <%= p.product.title %> (
-                                                                <%= p.quantity %>)</p>
+                                                                <%= p.quantity %>)
+                                                        </p>
                                                         <% }); %>
                                                             <p><b>Total:</b>
                                                                 <%= order.orderTotal %>
                                                             </p>
+                                                </div>
+                                                <div class="prod-background">
+                                                    <p><b>Status:</b>
+                                                        <%= order.orderStatus %>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -72,7 +78,7 @@
         </div>
         <!-- Footer -->
 
-        <%- include('../includes/footer')  %>
+        <%- include('../includes/footer') %>
 
             <!--  -->
 
@@ -81,11 +87,13 @@
 
             <!-- JavaScript files-->
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+            <script
+                src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"></script>
+            <script
+                src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/owl.carousel2.thumbs@0.1.8/dist/owl.carousel2.thumbs.min.js"></script>
-
             <script src="/js/notification.js"></script>
+            <script
+                src="https://cdn.jsdelivr.net/npm/owl.carousel2.thumbs@0.1.8/dist/owl.carousel2.thumbs.min.js"></script>

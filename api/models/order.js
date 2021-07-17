@@ -21,6 +21,11 @@ const orderSchema = new Schema({
     orderTotal: {
         type: Number,
         required: true
+    },
+    orderStatus: {
+        type: String,
+        enum: ['ORDERED', 'PREPARING', 'OUT FOR DELIVERY', 'ARRIVED'],
+        default: 'ORDERED'
     }
 });
 
