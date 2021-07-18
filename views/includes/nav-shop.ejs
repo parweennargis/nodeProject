@@ -32,11 +32,11 @@
           <i class="fas fa-bell mr-1 text-gray"></i></a>
         <div class="notifications" id="box">
           <h2>Notifications - <span>
-              <% if(notifications && Array.isArray(notifications) && notifications.length> 0) { %> <%=
+              <% if(typeof notifications != "undefined" && Array.isArray(notifications) && notifications.length> 0) { %> <%=
                   notifications.length %>
                   <% } %>
             </span></h2>
-          <% if(notifications && Array.isArray(notifications) && notifications.length> 0) { %>
+          <% if(typeof notifications != "undefined" && Array.isArray(notifications) && notifications.length> 0) { %>
             <% for(let notification of notifications) { %>
               <div class="notifications-item">
                 <!-- <img src="https://i.imgur.com/uIgDDDd.jpg" alt="img" /> -->

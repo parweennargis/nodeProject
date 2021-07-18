@@ -103,11 +103,11 @@ exports.getProduct = async (req, res, next) => {
       Product.findById(prodId),
       Notification.find({ userId: req.user._id }),
     ]);
-    res.render("shop/product-detail", {
+    return res.render("shop/product-detail", {
       product: product,
       pageTitle: product.title,
       path: "/products",
-      notifications,
+      notifications: notifications,
     });
   } catch (err) {
     const error = new Error(err);
